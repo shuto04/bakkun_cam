@@ -1,0 +1,21 @@
+<Window3@BoxLayout>
+    orientation: "vertical"
+
+    ActionBar:
+        ActionView:
+
+            ActionPrevious:
+                title: 'Can I share on Twitter?'
+                with_previous: False
+
+    BoxLayout:
+        Button:
+            id: button1
+            text: 'Yes'
+            on_press: app.root.change_disp()
+
+    BoxLayout:
+        Button:
+            id: button2
+            text: 'No'
+            on_press: app.root.change_disp2()

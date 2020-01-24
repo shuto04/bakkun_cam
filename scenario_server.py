@@ -27,6 +27,9 @@ line_firends = [
     "U4c8302e5ec187299150434212954e1ba", #shuto
 ]
 def aplay(fpath):
+    if "m4a" in fpath:
+        fpath.replace(m4a, wav)
+
     if os.path.exists(fpath):
         print(f"play: {fpath}")
         cmd = f"afplay {fpath} -r 1.5"

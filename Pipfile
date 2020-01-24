@@ -14,6 +14,8 @@ websocket-server = "*"
 websocket-client = "*"
 flask = "*"
 tweepy = "*"
+cython = "*"
+kivy = "*"
 
 [requires]
 python_version = "3.7"

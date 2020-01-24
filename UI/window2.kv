@@ -1,0 +1,32 @@
+<Window2@BoxLayout>
+    orientation: 'vertical'
+    Camera:
+        id: camera
+        index: 0
+        resolution: (640, 480)
+        play: True
+        # play: False
+
+    BoxLayout:
+        Button:
+            id: button1
+            text: 'Take Photo!!'
+            on_press: app.root.change_disp3(), app.root.capture
+            # on_press: app.root.capture
+
+    #Image:
+    #    id: camera
+    #    size_hint: None, None
+    #    size: 640, 480
+
+    #ToggleButton:
+    #    text: 'Play'
+    #    on_press: camera.play = not camera.play
+    #    # on_press: app.root.play()
+    #    size_hint_y: None
+    #    height: '48dp'
+    #Button:
+    #    text: 'Capture'
+    #    size_hint_y: None
+    #    height: '48dp'
+    #    on_press: app.root.capture()
