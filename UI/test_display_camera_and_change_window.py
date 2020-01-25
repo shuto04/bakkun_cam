@@ -1,15 +1,11 @@
 
-import os
-import kivy
 import cv2
 import time
-from kivy.uix.image import Image
 from kivy.graphics.texture import Texture
-from kivy.properties import StringProperty, ObjectProperty
+from kivy.properties import ObjectProperty
 from kivy.clock import Clock
 
 from kivy.app import App
-from kivy.core.window import Window
 from kivy.factory import Factory
 
 from kivy.uix.boxlayout import BoxLayout
@@ -17,6 +13,7 @@ from kivy.uix.boxlayout import BoxLayout
 # 日本語フォント表示対応
 from kivy.core.text import LabelBase, DEFAULT_FONT
 from kivy.resources import resource_add_path
+import paho.mqtt.client as mqtt
 
 resource_add_path("./UI/fonts/IPAexfont00301")
 LabelBase.register(DEFAULT_FONT, 'ipaexg.ttf')
@@ -27,6 +24,7 @@ from kivy.lang import Builder
 Builder.load_file('window1.kv')
 Builder.load_file('window2.kv')
 Builder.load_file('window3.kv')
+client = mqtt.Client()
 
 
 class MainRoot(BoxLayout):
@@ -43,6 +41,13 @@ class MainRoot(BoxLayout):
         self.window3 = Factory.Window3()
         super(MainRoot, self).__init__(**kwargs)
 
+    # mqttでYes, No送る
+    def send_selected_key(self, data):
+        ch = data
+        print(f"publish: {ch}")
+        client.publish("key", ch)
+
+    # 画面遷移のための処理
     def change_disp(self):
         self.clear_widgets()
         self.add_widget(self.window1)
@@ -74,6 +79,7 @@ class MainRoot(BoxLayout):
                 camera = self.ids['camera']
                 camera.texture = image_texture
 
+
     def capture(self):
         '''
         Function to capture the images and give them the names
@@ -89,6 +95,23 @@ class MainApp(App):
         super(MainApp, self).__init__(**kwargs)
         self.title = 'UI test '
     pass
+
+    # keyをmqttで送るための処理
+    def on_connect(client, userdata, flag, rc):
+        print("Connected with result code " + str(rc))
+
+    def on_disconnect(client, userdata, flag, rc):
+        if rc != 0:
+            print("Unexpected disconnection.")
+
+    def on_publish(client, userdata, mid):
+        print(f"publish #{mid}")
+
+    client.on_connect = on_connect
+    client.on_disconnect = on_disconnect
+    client.on_publish = on_publish
+    client.connect("localhost", 1883, 60)
+    client.loop_start()
 
 if __name__ == "__main__":
     flg = False

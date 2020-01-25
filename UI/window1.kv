@@ -12,10 +12,10 @@
         Button:
             id: button1
             text: 'Yes'
-            on_press: app.root.change_disp2()
+            on_press: app.root.change_disp2(), app.root.send_selected_key("y")
 
     BoxLayout:
         Button:
             id: button2
             text: 'No'
-            on_press: app.root.change_disp3()
+            on_press: app.root.change_disp3(), app.root.send_selected_key("n")
