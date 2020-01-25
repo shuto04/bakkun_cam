@@ -1,0 +1,26 @@
+<Ask_tweet_picture@BoxLayout>
+    orientation: "vertical"
+
+    Label:
+        size_hint_y: 0.7
+        id: label1
+        font_size: 68
+        text: "Share twitter?"
+
+    BoxLayout:
+        size_hint_y: 0.3
+        padding: 20,30,20,10
+
+        Button:
+            id: button1
+            text: 'Yes'
+            on_press: app.root.go_to_end_screen(), app.root.send_selected_key("y")
+            color: [1, 0, 0, 1]
+            font_size: 60
+
+        Button:
+            id: button2
+            text: 'No'
+            on_press: app.root.go_to_end_screen(), app.root.send_selected_key("n")
+            color: [0, 0, 1, 1]
+            font_size: 60

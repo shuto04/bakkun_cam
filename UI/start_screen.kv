@@ -1,0 +1,9 @@
+<Start_screen@BoxLayout>
+    orientation: "vertical"
+
+    BoxLayout:
+        Button:
+            id: button2
+            text: 'Start!!'
+            font_size: 68
+            on_press: app.root.go_to_ask_take_photo(), app.root.send_selected_key("y")

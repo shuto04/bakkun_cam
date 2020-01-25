@@ -13,7 +13,7 @@ import paho.mqtt.client as mqtt
 from gen_scenario import scenario
 # from gen_scenario import scenario_demo as scenario
 from cam_capture import capture
-from push_line import push_text_and_image
+# from push_line import push_text_and_image
 from tweet import tweet_text_and_image, gen_random_message
 
 # with open("assets/scenario.json") as f:
@@ -27,14 +27,14 @@ line_firends = [
     "U4c8302e5ec187299150434212954e1ba", #shuto
 ]
 def aplay(fpath):
-    if "m4a" in fpath:
-        fpath.replace(m4a, wav)
-
+    # macで再生するときはgen_senario.pyで音声ファイル形式をwavでなくm4aにする
     if os.path.exists(fpath):
         print(f"play: {fpath}")
-        cmd = f"afplay {fpath} -r 1.5"
+        # linuxはこっち
+        cmd = f"aplay {fpath}"
+        # macのときはこっち
+        # cmd = f"afplay {fpath} -r 1.5"
         subprocess.call(cmd.split(" "))
-        print(f"fin")
     else:
         print(f"file does not exist: {fpath}")
 
@@ -86,13 +86,15 @@ def on_message(client, userdata, msg):
         elif cmd == "photo":
             global fpath
             fpath, fthumb = capture()
-            endpoint = os.getenv("NGROK_ENDPOINT")
-            url = endpoint + fpath
-            url_thumb = endpoint + fthumb
-            # print(url, url_thumb)
-            push_text_and_image(line_firends, "写真撮れたよ〜", url, url_thumb)
+            # endpoint = os.getenv("nGROK_ENDPOINT")
+            # url = endpoint + fpath
+            # url_thumb = endpoint + fthumb
+            # # print(url, url_thumb)
+            # push_text_and_image(line_firends, "写真撮れたよ〜", url, url_thumb)
+            print("photo fin")
         elif cmd == "tweet":
-            tweet_text_and_image(gen_random_message(), "static/" + fpath)
+            print("tweet")
+            # tweet_text_and_image(gen_random_message(), "static/" + fpath)
         else:
             print(f"unknown command: {cmd}")
         scenario_p += jump
@@ -114,7 +116,6 @@ def main():
     # client2.on_publish = on_publish
 
     # client2.connect("localhost", 1883, 60)
-
     # client2.loop_start()
 
 if __name__ == '__main__':

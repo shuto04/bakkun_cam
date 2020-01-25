@@ -1,0 +1,21 @@
+<Display_camera_image@BoxLayout>
+    orientation: 'vertical'
+
+    # Todo: 撮影したら自動で次のページへ遷移する 時間経過or撮影したトリガーもらう
+    BoxLayout:
+        size_hint_y: 0.3
+        padding: 20,30,20,10
+        Button:
+            id: button1
+            text: 'Give me smile '
+            on_press: app.root.go_to_ask_tweet_picture(), # app.root.capture
+            font_size: 68
+
+    # カメラ画像を表示
+    Camera:
+        id: camera
+        padding: 20,30,20,10
+        index: 0
+        resolution: (640, 480)
+        play: True
+

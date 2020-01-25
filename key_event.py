@@ -26,6 +26,7 @@ def main():
     client.connect("localhost", 1883, 60)
 
     client.loop_start()
+    print("pass loop_start()")
 
     #標準入力のファイルディスクリプタを取得
     fd = sys.stdin.fileno()
@@ -47,6 +48,7 @@ def main():
     try:
         # 書き換えたnewをfdに適応する
         termios.tcsetattr(fd, termios.TCSANOW, new)
+        print("pass try")
 
         while True:
             # キーボードから入力を受ける。

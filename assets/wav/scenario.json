@@ -1,0 +1,117 @@
+[
+  {
+    "cmd": "texts",
+    "data": [
+      "そろそろ、美味しいご飯と一緒に写真を撮ろうよ！撮るならイエスボタン、撮らないならノーボタンを押してね！"
+    ]
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b11.wav"
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b6.wav"
+  },
+  {
+    "cmd": "pause",
+    "data": ""
+  },
+  {
+    "cmd": "yes-no",
+    "data": [
+      1,
+      16
+    ]
+  },
+  {
+    "cmd": "texts",
+    "data": [
+      "いいね！じゃあ、上のカメラを見て、美味しそうな顔をして！"
+    ]
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b19.wav"
+  },
+  {
+    "cmd": "photo",
+    "data": ""
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b21.wav"
+  },
+  {
+    "cmd": "texts",
+    "data": [
+      "はい、撮れたよ〜！",
+      "シェアする？するならイエスボタン、しないならノーボタンを押してね！"
+    ]
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b7.wav"
+  },
+  {
+    "cmd": "pause",
+    "data": ""
+  },
+  {
+    "cmd": "yes-no",
+    "data": [
+      1,
+      4
+    ]
+  },
+  {
+    "cmd": "tweet",
+    "data": ""
+  },
+  {
+    "cmd": "texts",
+    "data": [
+      "シェアしたよ、僕の一言コメントもチェックしてね"
+    ]
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b8.wav",
+    "next": 3
+  },
+  {
+    "cmd": "texts",
+    "data": [
+      "シェアはしないんだね、わかったよ"
+    ]
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b9.wav"
+  },
+  {
+    "cmd": "texts",
+    "data": [
+      "それじゃあ、またねー"
+    ]
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b17.wav",
+    "next": 3
+  },
+  {
+    "cmd": "texts",
+    "data": [
+      "最後に記念撮影っていうのもアリかもね。"
+    ]
+  },
+  {
+    "cmd": "audio",
+    "data": "assets/wav/b13.wav"
+  },
+  {
+    "cmd": "pause",
+    "data": ""
+  }
+]
