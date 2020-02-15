@@ -51,14 +51,13 @@ def on_publish(client, userdata, mid):
 
 def on_message(client, userdata, msg):
     print("Received message '" + str(msg.payload) + "' on topic '" + msg.topic + "' with QoS " + str(msg.qos))
-
     global scenario_p
     scenario_p = scenario_p % len(scenario)
-
+    
     ch = msg.payload.decode()
     if ch not in ['y', 'n']:
         return
-
+    
     while True:
         cmd = scenario[scenario_p]["cmd"]
         data = scenario[scenario_p]["data"]
@@ -106,17 +105,8 @@ def main():
     client.on_disconnect = on_disconnect
     client.on_publish = on_publish
     client.on_message = on_message
-
     client.connect("localhost", 1883, 60)
     client.loop_forever()
-
-    # client2 = mqtt.Client()
-    # client2.on_connect = on_connect
-    # client2.on_disconnect = on_disconnect
-    # client2.on_publish = on_publish
-
-    # client2.connect("localhost", 1883, 60)
-    # client2.loop_start()
 
 if __name__ == '__main__':
     # print(json.dumps(scenario, indent=2, ensure_ascii=False))
