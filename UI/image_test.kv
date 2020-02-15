@@ -1,7 +1,7 @@
-<Ask_take_photo@FloatLayout>
+<Image_test@FloatLayout>
 
     FloatLayout:
-        canvas.after:
+        canvas.before:
             Color:
                 hsv: 1, 0, 1
             Rectangle:
@@ -17,29 +17,22 @@
                 size: 250, 150
                 pos: 500, 400
 
-    Label:  # add comment
-        text: "写真を取ろうよ！"
+    Label:  # add comment   
+        text: "ようこそ！"
         color: 1,0,1,1
         font_size: 25
         pos: 230, 190
 
+        
+
+
     FloatLayout:
         Button:
-            id: button1
-            text: 'Yes'
-            on_press: app.root.go_to_display_camera_image(), app.root.send_selected_key("y")
-            color: [1, 0, 0, 1]
-            font_size: 60
-            pos: 100, 50
-            size_hint: .2, .2 
-        Button:
-            id: button2
-            text: 'No'
-            on_press: app.root.end_screen(), app.root.send_selected_key("n")
-            color: [0, 0, 1, 1]
-            font_size: 60
-            pos: 550, 50
+            on_press: app.root.go_to_ask_take_photo(), app.root.send_selected_key("y")
+            # size: 100, 100
+            font_size: 30
+            pos:100, 400
             size_hint: .2, .2 
 
-
+        
 

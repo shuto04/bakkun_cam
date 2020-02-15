@@ -1,8 +1,9 @@
-
+from kivy.uix.button import Button
 from kivy.properties import ObjectProperty
-
+import time
 from kivy.app import App
 from kivy.factory import Factory
+from kivy.clock import Clock
 
 from kivy.uix.boxlayout import BoxLayout
 
@@ -10,6 +11,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.text import LabelBase, DEFAULT_FONT
 from kivy.resources import resource_add_path
 import paho.mqtt.client as mqtt
+from kivy.uix.progressbar import ProgressBar
+
 
 resource_add_path("./UI/fonts/IPAexfont00301")
 LabelBase.register(DEFAULT_FONT, 'ipaexg.ttf')
@@ -22,6 +25,7 @@ Builder.load_file('ask_take_photo.kv')
 Builder.load_file('display_camera_image.kv')
 Builder.load_file('ask_tweet_picture.kv')
 Builder.load_file('end_screen.kv')
+Builder.load_file('image_test.kv')
 client = mqtt.Client()
 
 
@@ -33,6 +37,9 @@ class MainRoot(BoxLayout):
     end_screen = None
     image_texture = ObjectProperty(None)
     image_capture = ObjectProperty(None)
+
+    # test
+    image_test = None
 
     def __init__(self, **kwargs):
         # 起動時に各画面を作成して使い回す
@@ -56,10 +63,12 @@ class MainRoot(BoxLayout):
         self.add_widget(self.start_screen)
 
     def go_to_ask_take_photo(self):
+        test_counter = True
         self.clear_widgets()
         self.add_widget(self.ask_take_photo)
 
     def go_to_display_camera_image(self):
+        start_at = time.time()
         self.clear_widgets()
         self.add_widget(self.display_camera_image)
 
@@ -71,6 +80,40 @@ class MainRoot(BoxLayout):
         self.clear_widgets()
         self.add_widget(self.end_screen)
 
+    def go_to_imgate_test(self):
+        self.clear_widgets()
+        self.add_widget(self.image_test)
+
+#class ProgressTest(BoxLayout):
+#    def __init__(self, **kwargs):
+#        super(ProgressTest, self).__init__(**kwargs)
+#        #プログレスバーのウィジェット
+#        self.pb = ProgressBar()
+#        self.add_widget(self.pb)
+#
+#        #処理開始ボタンのウィジェット 
+#        button_pb = Button(text='progress')
+#        # ボタンに処理を紐づける
+#        button_pb.bind(on_press=self.test_progress)
+#        self.add_widget(button_pb)
+#
+#    #一定時間ごとに処理を繰り返す
+#    def pb_clock(self,dt):
+#        #プログレスバーの最大値になった時、クロックを停止する
+#        if self.pb.value == 100:
+#            exit
+#            # return False
+#        #プログレスバーの値を増やす
+#        self.pb.value += 1
+#
+#    def test_progress(self, *args):
+#        self.pb.value = 0
+#        #クロック始動
+#        Clock.schedule_interval(self.pb_clock, 1/60)
+#
+#class TestProgress(App):
+#    def build(self):
+#        return ProgressTest()
 
 class MainApp(App):
     def __init__(self, **kwargs):
@@ -95,6 +138,6 @@ class MainApp(App):
     client.loop_start()
 
 if __name__ == "__main__":
-    flg = False
     MainApp().run()
+        # TestProgress().run()
 

@@ -1,10 +1,37 @@
-<End_screen@BoxLayout>
-    orientation: "vertical"
+<End_screen@FloatLayout>
 
-    BoxLayout:
-        Button:
-            id: button1
-            text: 'Thanks for take photo!!'
-            font_size: 68
-            on_press: app.root.go_to_start_screen()
+
+    FloatLayout:
+        canvas.after:
+            Color:
+                hsv: 1, 0, 1
+            Rectangle:
+                # self here refers to the widget i.e BoxLayout
+                pos: self.pos
+                size: self.size
+            BorderImage:
+                source: "yoro_title.png"
+                size: 463, 109
+                pos: 150, 400
+
+    Label:  # add comment
+        text: "ありがとう！"
+        color: 1,0,1,1
+        font_size: 50
+        pos: 0, 0
+
+    Label:  # add comment
+        text: "また一緒に写真取ろうね！"
+        color: 1,0,1,1
+        font_size: 50
+        pos: 0, -100
+
+#    FloatLayout:
+        #Button:
+        #    id: button1
+        #    text: 'Thanks for take photo!!'
+        #    font_size: 68
+        #    on_press: app.root.go_to_start_screen()
+        #    size: 200, 100
+        #    pos: 200,200
 

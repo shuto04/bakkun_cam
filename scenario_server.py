@@ -1,4 +1,4 @@
-"""
+""":wq
 ボタンが押されるたびにシナリオを進めていく
 無限ループ
 https://docs.google.com/document/d/1JIYEfG2ZTI6NfGATaiU8_lb_NEhzdRq4IDlNlbcsc2I/edit
@@ -12,7 +12,7 @@ import paho.mqtt.client as mqtt
 
 from gen_scenario import scenario
 # from gen_scenario import scenario_demo as scenario
-from cam_capture import capture
+# from cam_capture import capture
 # from push_line import push_text_and_image
 from tweet import tweet_text_and_image, gen_random_message
 
@@ -84,8 +84,8 @@ def on_message(client, userdata, msg):
         elif cmd == "audio":
             aplay(data)
         elif cmd == "photo":
-            global fpath
-            fpath, fthumb = capture()
+            # global fpath
+            # fpath, fthumb = capture()
             # endpoint = os.getenv("nGROK_ENDPOINT")
             # url = endpoint + fpath
             # url_thumb = endpoint + fthumb

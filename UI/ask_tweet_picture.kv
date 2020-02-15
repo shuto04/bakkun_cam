@@ -1,22 +1,37 @@
-<Ask_tweet_picture@BoxLayout>
-    orientation: "vertical"
+<Ask_tweet_picture@FloatLayout>
 
-    Label:
-        size_hint_y: 0.7
-        id: label1
-        font_size: 68
-        text: "Share twitter?"
+    FloatLayout:
+        canvas.after:
+            Color:
+                hsv: 1, 0, 1
+            Rectangle:
+                # self here refers to the widget i.e BoxLayout
+                pos: self.pos
+                size: self.size
+            BorderImage:
+                source: "bakkun_without_back_ground.png"
+                size: 400, 400
+                pos: 200, 50
+            BorderImage:
+                source: "fukidashi.png"
+                size: 250, 150
+                pos: 500, 400
 
-    BoxLayout:
-        size_hint_y: 0.3
-        padding: 20,30,20,10
+    Label:  # add comment
+        text: "TWEETしていい？"
+        color: 1,0,1,1
+        font_size: 25
+        pos: 230, 190
 
+    FloatLayout:
         Button:
             id: button1
             text: 'Yes'
             on_press: app.root.go_to_end_screen(), app.root.send_selected_key("y")
-            color: [1, 0, 0, 1]
             font_size: 60
+            color: [1, 0, 0, 1]
+            pos: 100, 50
+            size_hint: .2, .2
 
         Button:
             id: button2
@@ -24,3 +39,5 @@
             on_press: app.root.go_to_end_screen(), app.root.send_selected_key("n")
             color: [0, 0, 1, 1]
             font_size: 60
+            pos: 550, 50
+            size_hint: .2, .2
