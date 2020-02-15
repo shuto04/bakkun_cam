@@ -11,17 +11,17 @@
             BorderImage:
                 source: "bakkun_without_back_ground.png"
                 size: 400, 400
-                pos: 200, 50
+                pos: 150, 50
             BorderImage:
                 source: "fukidashi.png"
                 size: 250, 150
-                pos: 500, 400
+                pos: 450, 400
 
     Label:  # add comment
         text: "TWEETしていい？"
         color: 1,0,1,1
         font_size: 25
-        pos: 230, 190
+        pos: 230, 200
 
     FloatLayout:
         Button:
@@ -30,7 +30,7 @@
             on_press: app.root.go_to_end_screen(), app.root.send_selected_key("y")
             font_size: 60
             color: [1, 0, 0, 1]
-            pos: 100, 50
+            pos: 50, 50
             size_hint: .2, .2
 
         Button:
@@ -39,5 +39,5 @@
             on_press: app.root.go_to_end_screen(), app.root.send_selected_key("n")
             color: [0, 0, 1, 1]
             font_size: 60
-            pos: 550, 50
+            pos: 500, 50
             size_hint: .2, .2

@@ -3,19 +3,32 @@
 
     # Todo: 撮影したら自動で次のページへ遷移する 時間経過or撮影したトリガーもらう
     BoxLayout:
-        size_hint_y: 0.3
+        size_hint_y: 0.1
         padding: 20,30,20,10
         Button:
             id: button1
             text: '次へ'
             on_press: app.root.go_to_ask_tweet_picture(), # app.root.capture
-            font_size: 68
+            font_size: 30
+    FloatLayout:
+        canvas.after:
+            Color:
+                hsv: 1, 0, 1
+            Rectangle:
+                # self here refers to the widget i.e BoxLayout
+                pos: self.pos
+                size: self.size
+            BorderImage:
+                # source: "bakkun_without_back_ground.png"
+                source: "raw.jpg"
+                size: 400, 400
+                pos: 200, 50
 
     # カメラ画像を表示
-    Camera:
-        id: camera
-        padding: 20,30,20,10
-        index: 0
-        resolution: (640, 480)
-        play: True
+    #Camera:
+    #    id: camera
+    #    padding: 20,30,20,10
+    #    index: 0
+    #    resolution: (640, 480)
+    #    play: True
 

@@ -1,6 +1,6 @@
 from kivy.uix.button import Button
 from kivy.properties import ObjectProperty
-import time
+from time import sleep
 from kivy.app import App
 from kivy.factory import Factory
 from kivy.clock import Clock
@@ -63,14 +63,16 @@ class MainRoot(BoxLayout):
         self.add_widget(self.start_screen)
 
     def go_to_ask_take_photo(self):
-        test_counter = True
-        self.clear_widgets()
-        self.add_widget(self.ask_take_photo)
+            self.clear_widgets()
+            self.add_widget(self.ask_take_photo)
 
     def go_to_display_camera_image(self):
-        start_at = time.time()
+        print("start")
         self.clear_widgets()
         self.add_widget(self.display_camera_image)
+        #while True:
+        #    print("update")
+        #    sleep(1)
 
     def go_to_ask_tweet_picture(self):
         self.clear_widgets()
@@ -83,37 +85,6 @@ class MainRoot(BoxLayout):
     def go_to_imgate_test(self):
         self.clear_widgets()
         self.add_widget(self.image_test)
-
-#class ProgressTest(BoxLayout):
-#    def __init__(self, **kwargs):
-#        super(ProgressTest, self).__init__(**kwargs)
-#        #プログレスバーのウィジェット
-#        self.pb = ProgressBar()
-#        self.add_widget(self.pb)
-#
-#        #処理開始ボタンのウィジェット 
-#        button_pb = Button(text='progress')
-#        # ボタンに処理を紐づける
-#        button_pb.bind(on_press=self.test_progress)
-#        self.add_widget(button_pb)
-#
-#    #一定時間ごとに処理を繰り返す
-#    def pb_clock(self,dt):
-#        #プログレスバーの最大値になった時、クロックを停止する
-#        if self.pb.value == 100:
-#            exit
-#            # return False
-#        #プログレスバーの値を増やす
-#        self.pb.value += 1
-#
-#    def test_progress(self, *args):
-#        self.pb.value = 0
-#        #クロック始動
-#        Clock.schedule_interval(self.pb_clock, 1/60)
-#
-#class TestProgress(App):
-#    def build(self):
-#        return ProgressTest()
 
 class MainApp(App):
     def __init__(self, **kwargs):
@@ -130,14 +101,14 @@ class MainApp(App):
 
     def on_publish(client, userdata, mid):
         print(f"publish #{mid}")
-
+        
     client.on_connect = on_connect
     client.on_disconnect = on_disconnect
     client.on_publish = on_publish
+
     client.connect("localhost", 1883, 60)
     client.loop_start()
 
 if __name__ == "__main__":
     MainApp().run()
-        # TestProgress().run()
 
